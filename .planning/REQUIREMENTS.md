@@ -162,17 +162,106 @@ Explicitly excluded. Documented to prevent scope creep.
 
 ## Traceability
 
-Which phases cover which requirements. Updated during roadmap creation.
+Which phases cover which requirements. Updated at roadmap creation (2026-04-20).
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (Populated by roadmapper) | — | Pending |
+| SESS-01 | Phase 4 | Pending |
+| SESS-02 | Phase 4 | Pending |
+| SESS-03 | Phase 4 | Pending |
+| SESS-04 | Phase 4 | Pending |
+| SESS-05 | Phase 4 | Pending |
+| SESS-06 | Phase 4 | Pending |
+| MON-01 | Phase 2 | Pending |
+| MON-02 | Phase 2 | Pending |
+| MON-03 | Phase 2 | Pending |
+| MON-04 | Phase 2 | Pending |
+| MON-05 | Phase 2 | Pending |
+| MON-06 | Phase 2 | Pending |
+| MON-07 | Phase 2 | Pending |
+| MON-08 | Phase 5 | Pending |
+| MON-09 | Phase 2 | Pending |
+| MON-10 | Phase 3 | Pending |
+| WAVE-01 | Phase 0 | Pending |
+| WAVE-02 | Phase 2 | Pending |
+| WAVE-03 | Phase 0 | Pending |
+| WAVE-04 | Phase 0 | Pending |
+| WAVE-05 | Phase 0 | Pending |
+| WAVE-06 | Phase 2 | Pending |
+| WAVE-07 | Phase 0 | Pending |
+| WAVE-08 | Phase 2 | Pending |
+| WAVE-09 | Phase 2 | Pending |
+| WAVE-10 | Phase 0 | Pending |
+| ALRM-01 | Phase 2 | Pending |
+| ALRM-02 | Phase 2 | Pending |
+| ALRM-03 | Phase 2 | Pending |
+| ALRM-04 | Phase 2 | Pending |
+| ALRM-05 | Phase 2 | Pending |
+| ALRM-06 | Phase 2 | Pending |
+| ALRM-07 | Phase 2 | Pending |
+| ALRM-08 | Phase 2 | Pending |
+| ALRM-09 | Phase 2 | Pending |
+| ALRM-10 | Phase 2 | Pending |
+| ALRM-11 | Phase 2 | Pending |
+| ALRM-12 | Phase 3 | Pending |
+| APG-01 | Phase 2 | Pending |
+| APG-02 | Phase 2 | Pending |
+| APG-03 | Phase 4 | Pending |
+| APG-04 | Phase 4 | Pending |
+| APG-05 | Phase 4 | Pending |
+| APG-06 | Phase 3 | Pending |
+| APG-07 | Phase 2 | Pending |
+| NIBP-01 | Phase 4 | Pending |
+| NIBP-02 | Phase 4 | Pending |
+| NIBP-03 | Phase 2 | Pending |
+| NIBP-04 | Phase 2 | Pending |
+| CTRL-01 | Phase 4 | Pending |
+| CTRL-02 | Phase 4 | Pending |
+| CTRL-03 | Phase 4 | Pending |
+| CTRL-04 | Phase 4 | Pending |
+| CTRL-05 | Phase 4 | Pending |
+| CTRL-06 | Phase 4 | Pending |
+| PRST-01 | Phase 4 | Pending |
+| PRST-02 | Phase 4 | Pending |
+| PRST-03 | Phase 2 | Pending |
+| PRST-04 | Phase 2 | Pending |
+| PWA-01 | Phase 3 | Pending |
+| PWA-02 | Phase 3 | Pending |
+| PWA-03 | Phase 3 | Pending |
+| PWA-04 | Phase 3 | Pending |
+| PWA-05 | Phase 3 | Pending |
+| PWA-06 | Phase 3 | Pending |
+| PWA-07 | Phase 3 | Pending |
+| SYNC-01 | Phase 4 | Pending |
+| SYNC-02 | Phase 4 | Pending |
+| SYNC-03 | Phase 4 | Pending |
+| SYNC-04 | Phase 4 | Pending |
+| SYNC-05 | Phase 4 | Pending |
+| SYNC-06 | Phase 4 | Pending |
+| SYNC-07 | Phase 5 | Pending |
+| LEGAL-01 | Phase 4 | Pending |
+| LEGAL-02 | Phase 2 | Pending |
+| LEGAL-03 | Phase 2 | Pending |
+| LEGAL-04 | Phase 2 | Pending |
+| LEGAL-05 | Phase 2 | Pending |
+
+**Phase 1 note:** The Pusher Latency Spike is a throwaway de-risking phase and owns zero v1 requirements by design. Its artifacts (`lib/sync/pusher-client.ts`, `lib/sync/messages.ts`, publish + auth routes) are inherited and productized by Phase 4. SYNC-07's latency budget is empirically validated during Phase 1 but formally verified under 30-min soak in Phase 5.
 
 **Coverage:**
-- v1 requirements: 62 total
-- Mapped to phases: 0 (pre-roadmap)
-- Unmapped: 62 ⚠️ (will resolve after roadmap)
+- v1 requirements: 78 total
+- Mapped to phases: 78 (100%)
+- Unmapped: 0
+
+| Phase | Count |
+|-------|-------|
+| Phase 0 — Waveform Prototype on iPhone | 6 |
+| Phase 1 — Pusher Latency Spike | 0 (throwaway spike) |
+| Phase 2 — Local Full Monitor (Clinical Correctness) | 34 |
+| Phase 3 — iOS Polish | 10 |
+| Phase 4 — Split + Sync | 26 |
+| Phase 5 — Scenario-Day Hardening & Deploy | 2 |
+| **Total** | **78** |
 
 ---
 *Requirements defined: 2026-04-20*
-*Last updated: 2026-04-20 after initial definition*
+*Last updated: 2026-04-20 after roadmap creation*
