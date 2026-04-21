@@ -40,7 +40,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **WAVE-07**: Sinus / Brady / Tachy use a template-lookup beat, stretched/compressed to the current HR
 - [ ] **WAVE-08**: Asystole draws a flat line with small baseline drift (no QRS complexes)
 - [ ] **WAVE-09**: Rhythm changes smoothly transition in < 500 ms (no visual snap/tear)
-- [ ] **WAVE-10**: Waveform engine state (phase, jitter, R-fired) lives in a dedicated engine-state object, not on the vitals store — Pusher diff merges cannot stomp beat phase
+- [x] **WAVE-10**: Waveform engine state (phase, jitter, R-fired) lives in a dedicated engine-state object, not on the vitals store — Pusher diff merges cannot stomp beat phase (Phase 0 Plan 01; `lib/waveforms/engine-state.ts` factory)
 
 ### Alarms (ALRM)
 
@@ -191,7 +191,7 @@ Which phases cover which requirements. Updated at roadmap creation (2026-04-20).
 | WAVE-07 | Phase 0 | Pending |
 | WAVE-08 | Phase 2 | Pending |
 | WAVE-09 | Phase 2 | Pending |
-| WAVE-10 | Phase 0 | Pending |
+| WAVE-10 | Phase 0 | Completed (Plan 00-01) |
 | ALRM-01 | Phase 2 | Pending |
 | ALRM-02 | Phase 2 | Pending |
 | ALRM-03 | Phase 2 | Pending |

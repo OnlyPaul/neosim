@@ -11,12 +11,12 @@
 ## Current Position
 
 - **Phase:** 0 — Waveform Prototype on iPhone
-- **Plan:** 4 plans created (00-01 scaffold+engine-state → 00-02 engine math+tests → 00-03 sweep-canvas+/prototype → 00-04 Vercel deploy+iPhone evidence)
-- **Status:** Ready to execute — all 6 REQ-IDs (WAVE-01/03/04/05/07/10) covered, plan-checker PASSED, RESEARCH open questions resolved
-- **Progress:** 0% of Phase 0 (planning complete, execution pending) · 0% of overall roadmap
+- **Plan:** 4 plans created; Plan 00-01 complete. Next up: 00-02 engine math+tests → 00-03 sweep-canvas+/prototype → 00-04 Vercel deploy+iPhone evidence
+- **Status:** Executing — Wave 1 of 4 complete (branch `phase-0-waveform-prototype`)
+- **Progress:** 25% of Phase 0 (1 of 4 plans complete) · 1 / 78 v1 requirements validated (~1% overall)
 
 ```
-[                    ] 0 / 78 v1 requirements validated
+[>                   ] 1 / 78 v1 requirements validated
 ```
 
 ## Performance Metrics
@@ -28,6 +28,12 @@
 | Instructor → monitor p95 (LTE) | < 400 ms | — | Measured in P1 spike, re-verified in P5 |
 | Heap growth over 30 min | ~flat | — | Verified in P5 soak |
 | Wake Lock hold | full session | — | P3 builds, P5 verifies |
+
+### Plan Execution Metrics
+
+| Phase-Plan | Duration | Tasks | Files | Commits |
+|------------|----------|-------|-------|---------|
+| 00-01 (scaffold + engine-state) | 6 min | 2 | 13 | 4 (206c16f, 15a3689, 14c5866, dc5c957) |
 
 ## Accumulated Context
 
@@ -44,6 +50,10 @@
 | Abstract transport behind `lib/sync/transport.ts` | If P1 latency spike fails, swap Pusher → Ably in one file | P1 |
 | Clinical sign-off is a hard gate before P2 closes | Neonatal thresholds + presets + Dawson targets must be NRP-instructor-reviewed | P2 |
 | Alarm tones NOT derived from IEC 60601-1-8 melodies | Legal clarity — educational simulator, not a clinical device | P2 |
+| Manual scaffold instead of `create-next-app` | Repo root was non-empty (.planning/, design/, CLAUDE.md); create-next-app refuses non-empty dirs | P0-01 |
+| Biome 2.4.12 pinned exact; `files.includes` scoped to app/lib/tests/ | Lint rule drift between patches; default config linted .planning/ and design/ flooding 1500+ diagnostics | P0-01 |
+| Vitest `passWithNoTests: true` | Vitest 4 default exits 1 on empty discovery; breaks gate when scaffold ships before tests | P0-01 |
+| Factory (`createEngineState()`) over singleton engine state | Vitest merge-regression test needs isolated instances per test; singleton would require `beforeEach` reset | P0-01 |
 
 ### Open Questions
 
@@ -62,9 +72,9 @@ None currently. Ready to start Phase 0.
 
 ## Session Continuity
 
-**Next action:** Run `/gsd-execute-phase 0` to execute all 4 Phase 0 plans (scaffold, engine, render, evidence).
+**Next action:** Execute Plan 00-02 (engine math + Vitest merge-regression test) on branch `phase-0-waveform-prototype`.
 
-**Last activity:** 2026-04-21 — Phase 0 planning complete. 4 plans in 4 sequential waves; plan-checker PASSED after resolving RESEARCH.md open questions (user confirmed macOS + USB available for Safari Web Inspector heap evidence).
+**Last activity:** 2026-04-21 02:25 UTC — Plan 00-01 (scaffold + engine-state) complete. 4 commits on `phase-0-waveform-prototype`. Next.js 15.5 + Vitest 4 + Biome 2 toolchain green; `lib/waveforms/engine-state.ts` shipped with 3/3 passing tests. WAVE-10 requirement validated.
 
 **Reference documents:**
 - `.planning/PROJECT.md` — core value, constraints, decisions
