@@ -35,7 +35,13 @@ An instructor can run a realistic golden-hour NRP scenario — driving HR, SpO�
   4. Fixed-size `Float32Array` circular buffer holds 1 full sweep per channel with heap flat over 5+ minutes (no unbounded growth)
   5. Engine state (phase, jitter, R-fired) lives in a separate `engine-state.ts` object, not on the vitals store — verified by a test that merges a partial vitals diff without stomping beat phase
 
-**Plans**: TBD
+**Plans:** 4 plans
+
+Plans:
+- [ ] 00-01-scaffold-and-engine-state-PLAN.md — Next.js 15.5 + Vitest + Biome scaffold + lib/waveforms/engine-state.ts factory (WAVE-10 module)
+- [ ] 00-02-engine-math-and-tests-PLAN.md — Port sinus PQRST to sampleEcg.ts (drop vt/vf/afib/capno); Vitest merge-regression + R-peak + time-base tests (WAVE-03, WAVE-07, WAVE-10)
+- [ ] 00-03-sweep-canvas-and-prototype-route-PLAN.md — DPR-aware sweepCanvas.ts (no cap) + Float32Array ring buffer + /prototype route with FPS overlay (WAVE-01, WAVE-04, WAVE-05)
+- [ ] 00-04-vercel-deploy-and-iphone-evidence-PLAN.md — Vercel preview deploy + iPhone checkpoint for FPS screenshot, heap snapshots, DPR check, LPM sanity (WAVE-01, WAVE-03, WAVE-04, WAVE-05)
 
 ### Phase 1: Pusher Latency Spike
 
@@ -153,7 +159,7 @@ SYNC-07
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 0. Waveform Prototype on iPhone | 0/TBD | Not started | — |
+| 0. Waveform Prototype on iPhone | 0/4 | Planned | — |
 | 1. Pusher Latency Spike | 0/TBD | Not started | — |
 | 2. Local Full Monitor (Clinical Correctness) | 0/TBD | Not started | — |
 | 3. iOS Polish | 0/TBD | Not started | — |
@@ -196,4 +202,4 @@ P1 (Pusher spike — parallel after P0) ─────────────�
 - P5 depends on a working two-device system from P4.
 
 ---
-*Last updated: 2026-04-20 after roadmap creation*
+*Last updated: 2026-04-21 after Phase 0 plan creation*
