@@ -969,24 +969,21 @@ Extracted directly from `/Users/onlypaul/Workspace/neosim/CLAUDE.md` — treat w
 | A11 | The design prototype's `Math.min(DPR, 2)` was a laptop-era heuristic, not a correctness requirement | Pitfall A | [CITED: design/src/canvasChannel.jsx line 10 + STACK.md + Pitfall 4] — HIGH confidence. CONTEXT explicitly requires fixing this (D-07). |
 | A12 | Creating `lib/clinical/` as an empty directory (with `.gitkeep`) is acceptable even though Biome + git may have opinions on empty dirs | Directory layout | LOW — git requires `.gitkeep`; Biome ignores the file. Standard pattern. |
 
-**Claims tagged `[ASSUMED]` requiring user confirmation:** A10 only (macOS availability for Safari Web Inspector). All others are either verified or cited to authoritative sources.
+**Claims tagged `[ASSUMED]` requiring user confirmation:** A10 only (macOS availability for Safari Web Inspector) — **RESOLVED 2026-04-21: user has macOS + USB available.** All others are either verified or cited to authoritative sources.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Does the user have macOS + USB cable for Safari Web Inspector?**
    - What we know: D-14 requires a heap snapshot at t=0 and t=5min. Safari Web Inspector (macOS → iPhone USB) is the canonical path.
-   - What's unclear: User's dev-machine OS wasn't stated in CONTEXT or STATE.
-   - Recommendation: Planner adds a Wave 0 Task "Verify macOS + Safari Web Inspector reachability to iPhone." If no Mac, substitute `performance.measureUserAgentSpecificMemory()` logged to a visible `<pre>` on `/prototype`. Adjust SC#4 evidence format accordingly.
+   - **RESOLVED 2026-04-21:** User confirmed macOS + USB tether available. Safari Web Inspector → Memory tab is the primary (and only) heap-evidence path. No `performance.measureUserAgentSpecificMemory()` fallback probe is needed in `PrototypeClient.tsx`. Plan 03 requires no changes; Plan 04 Task 2 `<how-to-verify>` uses Web Inspector as authored.
 
 2. **Should the heap measurement happen in a separate `/prototype?probe=heap` route, or is a single `/prototype` sufficient?**
    - What we know: D-14 requires a 5-minute heap snapshot comparison. The prototype runs continuously on load.
-   - What's unclear: Whether the heap snapshot is captured by letting the page run 5 minutes, or whether a short "warmup then snapshot" cycle is preferred.
-   - Recommendation: Simplest — let the page run 5 minutes, snapshot at 0 and 5. No extra route.
+   - **RESOLVED 2026-04-21:** Single `/prototype` route. Let the page run 5 minutes and snapshot at t=0 and t=5min. No extra route, no warmup mode.
 
 3. **Is inline-styles-only (UI-SPEC §Design System) the best call, or should the prototype use `app/prototype/page.module.css`?**
-   - What we know: UI-SPEC says both are acceptable ("All chrome is inline `style={}` or a single `app/prototype/page.module.css` at Claude's discretion").
-   - What's unclear: Tradeoff is trivial but worth noting.
-   - Recommendation: Inline styles. Route is throwaway; no class reuse needed.
+   - What we know: UI-SPEC says both are acceptable.
+   - **RESOLVED 2026-04-21:** Inline `style={}` only. Route is throwaway; no class reuse needed. Plan 03 Task 2's existing inline-styles choice is confirmed.
 
 ## Sources
 
