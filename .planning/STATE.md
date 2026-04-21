@@ -11,12 +11,12 @@
 ## Current Position
 
 - **Phase:** 0 — Waveform Prototype on iPhone
-- **Plan:** 4 plans created; Plans 00-01 and 00-02 complete. Next up: 00-03 sweep-canvas+/prototype → 00-04 Vercel deploy+iPhone evidence
-- **Status:** Executing — Wave 2 of 4 complete (branch `phase-0-waveform-prototype`)
-- **Progress:** 50% of Phase 0 (2 of 4 plans complete) · 3 / 78 v1 requirements validated (~4% overall)
+- **Plan:** 4 plans created; Plans 00-01, 00-02, and 00-03 complete. Next up: 00-04 Vercel deploy+iPhone evidence
+- **Status:** Executing — Wave 3 of 4 complete (branch `phase-0-waveform-prototype`)
+- **Progress:** 75% of Phase 0 (3 of 4 plans complete) · 6 / 78 v1 requirements validated (~8% overall)
 
 ```
-[=>                  ] 3 / 78 v1 requirements validated
+[==>                 ] 6 / 78 v1 requirements validated
 ```
 
 ## Performance Metrics
@@ -35,6 +35,7 @@
 |------------|----------|-------|-------|---------|
 | 00-01 (scaffold + engine-state) | 6 min | 2 | 13 | 4 (206c16f, 15a3689, 14c5866, dc5c957) |
 | 00-02 (engine math + tests) | 8 min | 2 | 3 | 2 (abb280d, 9f8a570) |
+| 00-03 (sweep-canvas + /prototype) | 8 min | 2 | 5 | 3 (dfb3859, 8f61faa, c8c1519) |
 
 ## Accumulated Context
 
@@ -58,6 +59,9 @@
 | Removed the RESEARCH.md `lastT===0 → seed` branch in sampleEcg | Magic-zero sentinel collided with deterministic t=0 unit tests; 100ms dt clamp already bounds the first-frame transient in production (one-time 100ms advance vs zero — visually indistinguishable) | P0-02 |
 | Added `Math.max(0, ...)` on dt in addition to the 100ms clamp | Pitfall B (non-monotonic clock) defensive guard; required because removing the seed branch made negative-dt edge cases reachable | P0-02 |
 | Merge-regression test advances via 4×40ms frames (160ms total) not 1×171ms jump | Respects the hard-locked Pitfall C clamp (100ms); single-jump shape from RESEARCH.md would have been silently clamped and under-advanced | P0-02 |
+| Dropped plan-prescribed `@ts-expect-error` for WebkitBackdropFilter | React 19's CSSProperties already types the vendor-prefixed property; the suppression failed TS strict ("Unused '@ts-expect-error' directive") and broke `pnpm build`. Plain comment documents the non-need | P0-03 |
+| Moved `'use client'` to line 1 of PrototypeClient.tsx | Next.js accepts the directive below comments, but the plan's literal `grep -E "^'use client'"` acceptance check expected the match on lines 1–5. Aligns with dominant Next.js 15 App Router convention | P0-03 |
+| Reworded sweepCanvas.ts / buffer.ts header comments to avoid negative-grep false-positives | Plan negative greps (`Math.min.*dpr.*2`, `ResizeObserver`, `.push(`) don't distinguish code from comments; intent is the forbidden patterns must not appear anywhere in the file to prevent accidental resurrection | P0-03 |
 
 ### Open Questions
 
@@ -76,9 +80,9 @@ None currently. Ready to start Phase 0.
 
 ## Session Continuity
 
-**Next action:** Execute Plan 00-03 (DPR-aware sweepCanvas + Float32Array ring buffer + `/prototype` route with FPS overlay) on branch `phase-0-waveform-prototype`.
+**Next action:** Execute Plan 00-04 (Vercel preview deploy + iPhone FPS/heap/DPR evidence capture) on branch `phase-0-waveform-prototype`. This is the final plan of Phase 0 and the real device-validation gate for WAVE-01, WAVE-03, WAVE-04, and WAVE-05.
 
-**Last activity:** 2026-04-21 02:37 UTC — Plan 00-02 (engine math + tests) complete. 2 new commits on `phase-0-waveform-prototype` (abb280d RED, 9f8a570 GREEN). `lib/waveforms/sampleEcg.ts` shipped with WAVE-10 merge-regression + WAVE-07 R-peak + WAVE-03 time-base invariance + Pitfall C dt-clamp tests all green (9/9 total). WAVE-03 and WAVE-07 requirements validated; WAVE-10 permanent regression guard is now live and ships forward through P2/P3/P4 unchanged (only the `mergeVitals` helper swaps for the real Zustand merge in P4).
+**Last activity:** 2026-04-21 02:51 UTC — Plan 00-03 (sweep-canvas + /prototype) complete. 3 new commits on `phase-0-waveform-prototype` (dfb3859 RED buffer, 8f61faa GREEN buffer+sweepCanvas, c8c1519 /prototype route). `lib/waveforms/buffer.ts` (34 lines) + `lib/waveforms/sweepCanvas.ts` (124 lines) + `app/prototype/page.tsx` (11 lines) + `app/prototype/PrototypeClient.tsx` (136 lines) all ship. 12/12 tests green; `pnpm build` exits 0 with 5 static pages including `/prototype` at 1.78 kB. WAVE-04 validated by unit tests; WAVE-01 + WAVE-05 are code-validated only (iPhone screenshot in Plan 00-04 is the device-validation gate).
 
 **Reference documents:**
 - `.planning/PROJECT.md` — core value, constraints, decisions
@@ -93,4 +97,4 @@ None currently. Ready to start Phase 0.
 
 ---
 *State initialized: 2026-04-20 at roadmap creation*
-*Last updated: 2026-04-21 after Plan 00-02 completion*
+*Last updated: 2026-04-21 after Plan 00-03 completion*

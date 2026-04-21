@@ -31,11 +31,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Waveforms & Rhythms (WAVE)
 
-- [ ] **WAVE-01**: ECG Lead II waveform renders at 250 Hz on Canvas 2D via sweep-draw (clear-ahead region, no full-canvas clear)
+- [x] **WAVE-01**: ECG Lead II waveform renders at 250 Hz on Canvas 2D via sweep-draw (clear-ahead region, no full-canvas clear) (Phase 0 Plan 03 code; `lib/waveforms/sweepCanvas.ts` stepSweep uses clear-ahead envelope `advancePx + lineWidth + 2`; `app/prototype/PrototypeClient.tsx` wires `createRingBuffer(250, 5)`. Device-validation evidence from iPhone captured in Plan 00-04.)
 - [ ] **WAVE-02**: SpO₂ plethysmograph renders at 100 Hz on Canvas 2D, amplitude scales with SpO₂ perfusion quality
 - [x] **WAVE-03**: Waveform engine is time-based (`performance.now` deltas), not frame-counted — survives Low Power Mode rAF throttling to 30 fps (Phase 0 Plan 02; `lib/waveforms/sampleEcg.ts` uses `dt/beatDurMs`; `tests/waveforms/sample-ecg.test.ts` asserts 1×33ms === 2×16.5ms within 1e-9)
-- [ ] **WAVE-04**: Waveform engine uses a fixed-size `Float32Array` circular buffer per channel (no unbounded growth over 30 min)
-- [ ] **WAVE-05**: Canvas is DPR-aware (backing resolution = CSS size × devicePixelRatio) and renders crisply on iPhone 12 at DPR=3
+- [x] **WAVE-04**: Waveform engine uses a fixed-size `Float32Array` circular buffer per channel (no unbounded growth over 30 min) (Phase 0 Plan 03; `lib/waveforms/buffer.ts` createRingBuffer + writeSample; `tests/waveforms/buffer.test.ts` pins single-allocation identity + modular wraparound + 5 KB byteLength; P0 usage: `createRingBuffer(250, 5)` = 1250 samples)
+- [x] **WAVE-05**: Canvas is DPR-aware (backing resolution = CSS size × devicePixelRatio) and renders crisply on iPhone 12 at DPR=3 (Phase 0 Plan 03 code; `lib/waveforms/sweepCanvas.ts` reads `window.devicePixelRatio || 1` with NO cap, applies `ctx.scale(dpr, dpr)` exactly once at setup. Device-validation evidence from iPhone DPR=3 captured in Plan 00-04.)
 - [ ] **WAVE-06**: Rhythm picker offers exactly 4 options in v1: Normal Sinus, Sinus Bradycardia, Sinus Tachycardia, Asystole
 - [x] **WAVE-07**: Sinus / Brady / Tachy use a template-lookup beat, stretched/compressed to the current HR (Phase 0 Plan 02; `lib/waveforms/sampleEcg.ts` ecgSinusTemplate gaussian-sum + R-peak detection at phase ∈ (0.27, 0.30); validated at HR=60 and HR=180)
 - [ ] **WAVE-08**: Asystole draws a flat line with small baseline drift (no QRS complexes)

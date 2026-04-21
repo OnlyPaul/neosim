@@ -40,7 +40,7 @@ An instructor can run a realistic golden-hour NRP scenario — driving HR, SpO�
 Plans:
 - [x] 00-01-scaffold-and-engine-state-PLAN.md — Next.js 15.5 + Vitest + Biome scaffold + lib/waveforms/engine-state.ts factory (WAVE-10 module) [SUMMARY](./phases/00-waveform-prototype/00-01-SUMMARY.md)
 - [x] 00-02-engine-math-and-tests-PLAN.md — Port sinus PQRST to sampleEcg.ts (drop vt/vf/afib/capno); Vitest merge-regression + R-peak + time-base tests (WAVE-03, WAVE-07, WAVE-10) [SUMMARY](./phases/00-waveform-prototype/00-02-SUMMARY.md)
-- [ ] 00-03-sweep-canvas-and-prototype-route-PLAN.md — DPR-aware sweepCanvas.ts (no cap) + Float32Array ring buffer + /prototype route with FPS overlay (WAVE-01, WAVE-04, WAVE-05)
+- [x] 00-03-sweep-canvas-and-prototype-route-PLAN.md — DPR-aware sweepCanvas.ts (no cap) + Float32Array ring buffer + /prototype route with FPS overlay (WAVE-01, WAVE-04, WAVE-05) [SUMMARY](./phases/00-waveform-prototype/00-03-SUMMARY.md)
 - [ ] 00-04-vercel-deploy-and-iphone-evidence-PLAN.md — Vercel preview deploy + iPhone checkpoint for FPS screenshot, heap snapshots, DPR check, LPM sanity (WAVE-01, WAVE-03, WAVE-04, WAVE-05)
 
 ### Phase 1: Pusher Latency Spike
