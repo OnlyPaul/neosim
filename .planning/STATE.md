@@ -1,6 +1,6 @@
 # State: NeoSim — Neonatal Monitor Simulator
 
-**Last updated:** 2026-04-20
+**Last updated:** 2026-04-21
 
 ## Project Reference
 
@@ -11,9 +11,9 @@
 ## Current Position
 
 - **Phase:** 0 — Waveform Prototype on iPhone
-- **Plan:** None yet (pending `/gsd-plan-phase 0`)
-- **Status:** Not started — roadmap approved, ready for phase-0 planning
-- **Progress:** 0% of Phase 0 · 0% of overall roadmap
+- **Plan:** 4 plans created (00-01 scaffold+engine-state → 00-02 engine math+tests → 00-03 sweep-canvas+/prototype → 00-04 Vercel deploy+iPhone evidence)
+- **Status:** Ready to execute — all 6 REQ-IDs (WAVE-01/03/04/05/07/10) covered, plan-checker PASSED, RESEARCH open questions resolved
+- **Progress:** 0% of Phase 0 (planning complete, execution pending) · 0% of overall roadmap
 
 ```
 [                    ] 0 / 78 v1 requirements validated
@@ -62,7 +62,9 @@ None currently. Ready to start Phase 0.
 
 ## Session Continuity
 
-**Next action:** Run `/gsd-plan-phase 0` to decompose Phase 0 into plans.
+**Next action:** Run `/gsd-execute-phase 0` to execute all 4 Phase 0 plans (scaffold, engine, render, evidence).
+
+**Last activity:** 2026-04-21 — Phase 0 planning complete. 4 plans in 4 sequential waves; plan-checker PASSED after resolving RESEARCH.md open questions (user confirmed macOS + USB available for Safari Web Inspector heap evidence).
 
 **Reference documents:**
 - `.planning/PROJECT.md` — core value, constraints, decisions
