@@ -1,6 +1,9 @@
 // Source: PLAN 00-01 Task 2 <behavior> contract (D-08 / WAVE-10)
 import { describe, expect, it } from 'vitest';
-import { createEngineState, type EngineState } from '@/lib/waveforms/engine-state';
+import {
+  createEngineState,
+  type EngineState,
+} from '@/lib/waveforms/engine-state';
 
 describe('createEngineState (WAVE-10 factory shape)', () => {
   it('returns factory defaults { phase: 0, rFired: false, lastT: 0, jitter: 1 }', () => {
