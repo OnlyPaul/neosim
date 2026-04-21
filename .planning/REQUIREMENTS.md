@@ -33,11 +33,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [ ] **WAVE-01**: ECG Lead II waveform renders at 250 Hz on Canvas 2D via sweep-draw (clear-ahead region, no full-canvas clear)
 - [ ] **WAVE-02**: SpO₂ plethysmograph renders at 100 Hz on Canvas 2D, amplitude scales with SpO₂ perfusion quality
-- [ ] **WAVE-03**: Waveform engine is time-based (`performance.now` deltas), not frame-counted — survives Low Power Mode rAF throttling to 30 fps
+- [x] **WAVE-03**: Waveform engine is time-based (`performance.now` deltas), not frame-counted — survives Low Power Mode rAF throttling to 30 fps (Phase 0 Plan 02; `lib/waveforms/sampleEcg.ts` uses `dt/beatDurMs`; `tests/waveforms/sample-ecg.test.ts` asserts 1×33ms === 2×16.5ms within 1e-9)
 - [ ] **WAVE-04**: Waveform engine uses a fixed-size `Float32Array` circular buffer per channel (no unbounded growth over 30 min)
 - [ ] **WAVE-05**: Canvas is DPR-aware (backing resolution = CSS size × devicePixelRatio) and renders crisply on iPhone 12 at DPR=3
 - [ ] **WAVE-06**: Rhythm picker offers exactly 4 options in v1: Normal Sinus, Sinus Bradycardia, Sinus Tachycardia, Asystole
-- [ ] **WAVE-07**: Sinus / Brady / Tachy use a template-lookup beat, stretched/compressed to the current HR
+- [x] **WAVE-07**: Sinus / Brady / Tachy use a template-lookup beat, stretched/compressed to the current HR (Phase 0 Plan 02; `lib/waveforms/sampleEcg.ts` ecgSinusTemplate gaussian-sum + R-peak detection at phase ∈ (0.27, 0.30); validated at HR=60 and HR=180)
 - [ ] **WAVE-08**: Asystole draws a flat line with small baseline drift (no QRS complexes)
 - [ ] **WAVE-09**: Rhythm changes smoothly transition in < 500 ms (no visual snap/tear)
 - [x] **WAVE-10**: Waveform engine state (phase, jitter, R-fired) lives in a dedicated engine-state object, not on the vitals store — Pusher diff merges cannot stomp beat phase (Phase 0 Plan 01; `lib/waveforms/engine-state.ts` factory)
@@ -184,11 +184,11 @@ Which phases cover which requirements. Updated at roadmap creation (2026-04-20).
 | MON-10 | Phase 3 | Pending |
 | WAVE-01 | Phase 0 | Pending |
 | WAVE-02 | Phase 2 | Pending |
-| WAVE-03 | Phase 0 | Pending |
+| WAVE-03 | Phase 0 | Completed (Plan 00-02) |
 | WAVE-04 | Phase 0 | Pending |
 | WAVE-05 | Phase 0 | Pending |
 | WAVE-06 | Phase 2 | Pending |
-| WAVE-07 | Phase 0 | Pending |
+| WAVE-07 | Phase 0 | Completed (Plan 00-02) |
 | WAVE-08 | Phase 2 | Pending |
 | WAVE-09 | Phase 2 | Pending |
 | WAVE-10 | Phase 0 | Completed (Plan 00-01) |
