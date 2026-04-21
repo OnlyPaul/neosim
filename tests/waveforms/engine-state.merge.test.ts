@@ -19,14 +19,18 @@ describe('engine-state / vitals-store merge regression (WAVE-10)', () => {
     let vitals: Vitals = { hr: 140 };
 
     // Tick engine to a mid-beat phase by calling sampleEcg with a synthetic
-    // monotonic clock. Advance ~40% through one beat at HR=140 (~171ms).
+    // monotonic clock. Advance ~40% through one beat at HR=140 (beatDurMs≈428.6).
+    // Must step in ≤100ms frames to respect the Pitfall C dt clamp — a single
+    // 171ms jump would get clamped to 100ms and under-advance. Four 40ms frames
+    // (~160ms total) put phase at ~0.373, comfortably inside (0.3, 0.5).
     const t0 = 0;
-    const beatMs = 60_000 / vitals.hr;
-    const targetPhase = 0.4;
-    // Single call to establish lastT
+    const frameMs = 40;
+    const frames = 4;
+    // First call seeds dt=0 against factory lastT=0
     sampleEcg(t0, vitals.hr, engine);
-    // Second call, Δt advances phase to ~0.4
-    sampleEcg(t0 + targetPhase * beatMs, vitals.hr, engine);
+    for (let i = 1; i <= frames; i++) {
+      sampleEcg(t0 + i * frameMs, vitals.hr, engine);
+    }
 
     const phaseBefore = engine.phase;
     const rFiredBefore = engine.rFired;
