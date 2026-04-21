@@ -1,10 +1,11 @@
 ---
 phase: 0
 slug: waveform-prototype
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-04-21
+reviewed_at: 2026-04-21
 ---
 
 # Phase 0 — UI Design Contract
@@ -177,12 +178,12 @@ These are **not omissions** — they are correctly deferred per D-02 and Phase 2
 
 ## Checker Sign-Off
 
-- [ ] Dimension 1 Copywriting: PASS — overlay format locked, no invented CTAs, out-of-scope items explicitly marked `not applicable`
-- [ ] Dimension 2 Visuals: PASS — canvas + overlay + black background, nothing else on screen
-- [ ] Dimension 3 Color: PASS — 60/30/10 split (black dominant / dark-gray secondary / green accent), accent reserved-for list names exactly one element (waveform stroke)
-- [ ] Dimension 4 Typography: PASS — two font stacks declared (monospace for overlay, system sans for optional title); three size/weight combinations total
-- [ ] Dimension 5 Spacing: PASS — 4/8/16 multiples only; `lg` declared-but-unused and flagged as P2 inheritance
-- [ ] Dimension 6 Registry Safety: PASS — no registries in use, no third-party blocks, vetting gate trivially satisfied
+- [x] Dimension 1 Copywriting: PASS — overlay format locked, no invented CTAs, out-of-scope items explicitly marked `not applicable`
+- [x] Dimension 2 Visuals: PASS — canvas + overlay + black background, nothing else on screen
+- [x] Dimension 3 Color: PASS — 60/30/10 split (black dominant / dark-gray secondary / green accent), accent reserved-for list names exactly one element (waveform stroke)
+- [x] Dimension 4 Typography: PASS — two font stacks declared (monospace for overlay, system sans for optional title); three size/weight combinations total
+- [x] Dimension 5 Spacing: PASS — 4/8/16 multiples only; `lg` declared-but-unused and flagged as P2 inheritance
+- [x] Dimension 6 Registry Safety: PASS — no registries in use, no third-party blocks, vetting gate trivially satisfied
 
 **Approval:** pending (gsd-ui-checker to verify and upgrade status to `approved`)
 
